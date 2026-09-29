@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Missão Digitação</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="mundo-bg">
+    <div class="ilha ilha-a"></div>
+    <div class="ilha ilha-b"></div>
+    <div class="nuvem n1"></div>
+    <div class="nuvem n2"></div>
+  </div>
+
+  <main class="app">
+    <section id="tela-mapa" class="tela ativa painel">
+      <header class="header-jogo">
+        <div>
+          <div class="logo">⌨️ Missão Digitação</div>
+          <small>Treine, desbloqueie fases e colecione medalhas.</small>
+        </div>
+        <div class="acoes-topo">
+          <button id="btn-musica" class="icone-btn" title="Música">🎵</button>
+          <button id="btn-som" class="icone-btn" title="Efeitos sonoros">🔊</button>
+          <button id="btn-historico" class="icone-btn" title="Histórico">📘</button>
+        </div>
+      </header>
+
+      <div class="hero">
+        <div class="mascote-box">
+          <div id="mascote-principal" class="mascote grande">🤖</div>
+          <div class="balao">
+            <strong>Olá, digitador!</strong>
+            <span id="fala-mapa">Complete as missões para liberar novas ilhas.</span>
+          </div>
+        </div>
+        <div class="resumo-jogador">
+          <div><span>⭐</span><strong id="estrelas-totais">0</strong><small>estrelas</small></div>
+          <div><span>🏅</span><strong id="medalhas-totais">0</strong><small>medalhas</small></div>
+          <div><span>🔥</span><strong id="melhor-ppm">0</strong><small>melhor PPM</small></div>
+        </div>
+      </div>
+
+      <h2 class="titulo-secao">Mapa de aprendizagem</h2>
+
+      <div class="mapa-fases">
+        <article class="fase liberada" data-fase="1">
+          <div class="fase-icone">🌱</div>
+          <div class="fase-conteudo">
+            <small>Ilha 1</small>
+            <h3>Primeiros Passos</h3>
+            <p>Palavras curtas e ritmo tranquilo.</p>
+            <div class="estrelas-fase" id="estrelas-fase-1">☆☆☆</div>
+          </div>
+          <button class="btn-fase" data-fase="1">Jogar</button>
+        </article>
+
+        <div class="caminho">••••••••••</div>
+
+        <article class="fase bloqueada" data-fase="2">
+          <div class="fase-icone">🚀</div>
+          <div class="fase-conteudo">
+            <small>Ilha 2</small>
+            <h3>Teclas em Ação</h3>
+            <p>Palavras maiores e mais variedade.</p>
+            <div class="estrelas-fase" id="estrelas-fase-2">☆☆☆</div>
+          </div>
+          <button class="btn-fase" data-fase="2">🔒</button>
+        </article>
+
+        <div class="caminho">••••••••••</div>
+
+        <article class="fase bloqueada" data-fase="3">
+          <div class="fase-icone">🏰</div>
+          <div class="fase-conteudo">
+            <small>Ilha 3</small>
+            <h3>Castelo das Frases</h3>
+            <p>Frases curtas com atenção e precisão.</p>
+            <div class="estrelas-fase" id="estrelas-fase-3">☆☆☆</div>
+          </div>
+          <button class="btn-fase" data-fase="3">🔒</button>
+        </article>
+      </div>
+
+      <section class="colecao">
+        <div>
+          <h2>Minha coleção</h2>
+          <p>Conquiste medalhas ao atingir objetivos.</p>
+        </div>
+        <div id="badges" class="badges"></div>
+      </section>
+    </section>
+
+    <section id="tela-jogo" class="tela painel">
+      <header class="header-jogo">
+        <button id="btn-sair" class="icone-btn">←</button>
+        <div class="fase-titulo">
+          <small id="nome-ilha">Ilha 1</small>
+          <strong id="nome-fase">Primeiros Passos</strong>
+        </div>
+        <div class="acoes-topo">
+          <button id="btn-musica-jogo" class="icone-btn">🎵</button>
+          <button id="btn-som-jogo" class="icone-btn">🔊</button>
+        </div>
+      </header>
+
+      <div class="hud">
+        <div><span>Desafio</span><strong><span id="numero-desafio">1</span>/10</strong></div>
+        <div><span>Tempo</span><strong id="tempo">00:00</strong></div>
+        <div><span>Combo</span><strong id="combo">x0</strong></div>
+        <div><span>⭐</span><strong id="pontos">0</strong></div>
+      </div>
+
+      <div class="progresso-wrap">
+        <div class="trilha" id="trilha"></div>
+        <div class="barra"><div id="barra-preenchida"></div></div>
+      </div>
+
+      <div class="cenario-jogo" id="cenario-jogo">
+        <div class="sol">☀️</div>
+        <div class="passaro p1">🐦</div>
+        <div class="passaro p2">🦋</div>
+        <div id="mascote-jogo" class="mascote-jogo">🤖</div>
+        <div class="fala-jogo" id="fala-jogo">Vamos começar!</div>
+      </div>
+
+      <div class="desafio-card">
+        <div class="dica-dedos">
+          <span>💡</span>
+          <div>
+            <small>Dica</small>
+            <strong id="dica-teclado">Mantenha as mãos relaxadas.</strong>
+          </div>
+        </div>
+        <p>Digite exatamente:</p>
+        <div id="palavra-alvo" class="palavra-alvo"></div>
+        <input id="entrada-digitacao" autocomplete="off" spellcheck="false" placeholder="Digite aqui e pressione Enter">
+        <p id="feedback" class="feedback">Boa sorte!</p>
+      </div>
+
+      <div class="metricas-live">
+        <div><span>✅</span><small>Acertos</small><strong id="acertos">0</strong></div>
+        <div><span>❌</span><small>Erros</small><strong id="erros">0</strong></div>
+        <div><span>🎯</span><small>Precisão</small><strong id="precisao-atual">100%</strong></div>
+      </div>
+
+      <button id="btn-confirmar" class="botao-principal">Confirmar</button>
+      <div id="efeitos-area" class="efeitos-area"></div>
+    </section>
+
+    <section id="tela-resultado" class="tela painel">
+      <div class="resultado-topo">
+        <div id="trofeu-final" class="trofeu">🏆</div>
+        <h2>Missão concluída!</h2>
+        <div id="estrelas-resultado" class="estrelas-gigantes">★★★</div>
+        <p id="mensagem-final"></p>
+      </div>
+
+      <div class="resultado-grid">
+        <div><span>✅</span><small>Acertos</small><strong id="resultado-acertos">0/10</strong></div>
+        <div><span>🎯</span><small>Precisão</small><strong id="resultado-precisao">0%</strong></div>
+        <div><span>⌨️</span><small>PPM</small><strong id="resultado-ppm">0</strong></div>
+        <div><span>⏱️</span><small>Tempo</small><strong id="resultado-tempo">00:00</strong></div>
+        <div><span>🔥</span><small>Melhor combo</small><strong id="resultado-combo">0</strong></div>
+        <div><span>⭐</span><small>Pontos</small><strong id="resultado-pontos">0</strong></div>
+      </div>
+
+      <div id="nova-medalha" class="nova-medalha escondido"></div>
+
+      <div class="painel-erros">
+        <h3>Treino recomendado</h3>
+        <p id="erros-caracteres">Nenhum erro de caractere.</p>
+      </div>
+
+      <button id="btn-proxima-fase" class="botao-principal">Próxima fase</button>
+      <button id="btn-jogar-novamente" class="botao-secundario">Jogar novamente</button>
+      <button id="btn-voltar-mapa" class="botao-secundario">Voltar ao mapa</button>
+    </section>
+
+    <section id="tela-historico" class="tela painel">
+      <header class="header-jogo">
+        <button id="btn-voltar-historico" class="icone-btn">←</button>
+        <h2>Histórico</h2>
+        <div></div>
+      </header>
+      <div id="lista-historico" class="historico-lista"></div>
+      <button id="btn-limpar-historico" class="botao-perigo">Limpar histórico</button>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

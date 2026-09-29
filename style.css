@@ -1,0 +1,83 @@
+*{box-sizing:border-box}
+:root{
+  --azul:#596af5;--azul2:#7b8cff;--texto:#25324a;--muted:#71809b;
+  --verde:#34a36f;--vermelho:#dc4d59;--amarelo:#ffd75a;--creme:#fff7d7;
+}
+body{
+  margin:0;min-height:100vh;font-family:Arial,sans-serif;color:var(--texto);
+  background:linear-gradient(180deg,#bfe7ff 0%,#e5f5ff 42%,#f9efd0 100%);
+  display:flex;justify-content:center;align-items:center;padding:22px;overflow-x:hidden
+}
+.mundo-bg{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.ilha{position:absolute;width:340px;height:120px;border-radius:50%;background:#8ed67a;filter:blur(.2px);opacity:.45}
+.ilha:after{content:"";position:absolute;left:45px;right:45px;bottom:-30px;height:65px;border-radius:50%;background:#d5b47b}
+.ilha-a{left:-120px;bottom:35px}.ilha-b{right:-130px;bottom:120px;transform:scale(.7)}
+.nuvem{position:absolute;width:120px;height:42px;border-radius:50px;background:rgba(255,255,255,.8);box-shadow:36px -15px 0 7px rgba(255,255,255,.8),72px 0 0 rgba(255,255,255,.8);animation:nuvem 30s linear infinite}
+.n1{top:75px;left:-190px}.n2{top:180px;left:-300px;animation-duration:38s}
+@keyframes nuvem{to{transform:translateX(calc(100vw + 450px))}}
+.app{width:100%;max-width:940px;position:relative;z-index:2}
+.painel{background:rgba(255,255,255,.96);border-radius:30px;padding:30px;box-shadow:0 18px 55px rgba(50,72,130,.18);position:relative;overflow:hidden}
+.tela{display:none}.tela.ativa{display:block}
+.header-jogo{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.logo{font-size:23px;font-weight:800}
+.header-jogo small{color:var(--muted)}
+.acoes-topo{display:flex;gap:8px}
+.icone-btn{border:none;background:#eef2ff;color:#3443a8;width:44px;height:44px;border-radius:14px;font-size:20px;cursor:pointer}
+.hero{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin:28px 0}
+.mascote-box{background:linear-gradient(135deg,#eaf5ff,#fff6d8);border-radius:22px;padding:20px;display:flex;gap:18px;align-items:center}
+.mascote{font-size:58px;animation:pulo 2s ease-in-out infinite}.mascote.grande{font-size:72px}
+@keyframes pulo{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.balao{background:#fff;border-radius:18px;padding:14px 17px;box-shadow:0 5px 16px rgba(0,0,0,.07);position:relative}
+.balao strong,.balao span{display:block}.balao span{color:var(--muted);margin-top:5px}
+.resumo-jogador{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.resumo-jogador div{background:#f6f8fe;border-radius:18px;padding:14px;text-align:center}
+.resumo-jogador span,.resumo-jogador strong,.resumo-jogador small{display:block}.resumo-jogador span{font-size:24px}.resumo-jogador strong{font-size:22px;margin:5px 0}.resumo-jogador small{color:var(--muted)}
+.titulo-secao{text-align:center;margin:26px 0 18px}
+.mapa-fases{display:flex;align-items:center;gap:8px}
+.fase{flex:1;border-radius:22px;padding:18px;background:#f7f9ff;border:3px solid transparent;display:flex;align-items:center;gap:14px;min-height:155px;position:relative}
+.fase.liberada{border-color:#b9c4ff;background:linear-gradient(145deg,#f4f6ff,#fff)}
+.fase.bloqueada{opacity:.57;filter:saturate(.65)}
+.fase-icone{font-size:45px}.fase-conteudo{flex:1}.fase h3{margin:4px 0}.fase p{margin:4px 0;color:var(--muted);font-size:14px}.estrelas-fase{color:#f0b800;font-size:20px;letter-spacing:2px}
+.btn-fase{border:none;background:var(--azul);color:white;padding:10px 13px;border-radius:12px;font-weight:bold;cursor:pointer}
+.fase.bloqueada .btn-fase{background:#b7bfd0}
+.caminho{color:#aab5d2;letter-spacing:2px}
+.colecao{margin-top:22px;background:#fff7d8;border-radius:22px;padding:18px;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.colecao h2,.colecao p{margin:3px 0}.badges{display:flex;gap:9px;flex-wrap:wrap;justify-content:flex-end}
+.badge{width:56px;height:56px;border-radius:16px;background:#fff;display:grid;place-items:center;font-size:29px;box-shadow:0 4px 12px rgba(0,0,0,.07)}
+.badge.bloq{filter:grayscale(1);opacity:.35}
+
+.fase-titulo{text-align:center}.fase-titulo small,.fase-titulo strong{display:block}.fase-titulo small{color:var(--muted)}
+.hud{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0}
+.hud div,.metricas-live div,.resultado-grid div{background:#f5f7fc;border-radius:16px;padding:12px;text-align:center}
+.hud span,.hud strong{display:block}.hud span{font-size:12px;color:var(--muted)}.hud strong{margin-top:4px;font-size:19px}
+.progresso-wrap{margin:10px 0}.trilha{display:grid;grid-template-columns:repeat(10,1fr);gap:6px}.trilha span{height:28px;border-radius:10px;background:#edf0f6;display:grid;place-items:center;color:#c7cddd}.trilha span.ok{background:#fff0ae;color:#e6ad00;transform:translateY(-2px)}
+.barra{height:9px;background:#edf0f6;border-radius:20px;overflow:hidden;margin-top:8px}.barra div{height:100%;background:linear-gradient(90deg,var(--azul),#8ca2ff);width:10%;transition:.35s}
+.cenario-jogo{height:115px;background:linear-gradient(#d9f3ff,#ecfae5);border-radius:22px;position:relative;overflow:hidden;margin:18px 0}
+.cenario-jogo:after{content:"";position:absolute;left:-5%;right:-5%;bottom:-38px;height:80px;border-radius:50%;background:#91d777}
+.sol{position:absolute;right:30px;top:14px;font-size:33px}.passaro{position:absolute;font-size:24px;animation:voo 3s ease-in-out infinite}.p1{left:18%;top:18px}.p2{right:30%;top:48px;animation-delay:.7s}
+@keyframes voo{0%,100%{transform:translateY(0) translateX(0)}50%{transform:translateY(-8px) translateX(10px)}}
+.mascote-jogo{position:absolute;left:42px;bottom:20px;font-size:54px;z-index:2;transition:.25s}
+.mascote-jogo.acerto{animation:celebra .55s}.mascote-jogo.erro{animation:tremor .35s}
+@keyframes celebra{50%{transform:translateY(-14px) rotate(8deg)}}@keyframes tremor{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.fala-jogo{position:absolute;left:110px;bottom:55px;background:white;padding:10px 14px;border-radius:16px;z-index:2;font-weight:bold}
+.desafio-card{text-align:center;background:#fff;border:2px solid #eef1f7;border-radius:22px;padding:20px}
+.dica-dedos{display:inline-flex;gap:8px;align-items:center;background:#fff7d8;border-radius:14px;padding:8px 12px}.dica-dedos small,.dica-dedos strong{display:block;text-align:left}.dica-dedos small{color:var(--muted)}
+.palavra-alvo{font-size:42px;font-weight:800;color:#3549ca;margin:16px 0;word-break:break-word}
+#entrada-digitacao{width:100%;padding:16px;border:3px solid #dde3f0;border-radius:15px;font-size:22px;text-align:center;outline:none}#entrada-digitacao:focus{border-color:var(--azul)}
+.feedback{min-height:24px;font-weight:bold}.feedback.ok{color:var(--verde)}.feedback.erro{color:var(--vermelho)}
+.metricas-live,.resultado-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}.metricas-live span,.metricas-live small,.metricas-live strong,.resultado-grid span,.resultado-grid small,.resultado-grid strong{display:block}.metricas-live span,.resultado-grid span{font-size:24px}.metricas-live small,.resultado-grid small{color:var(--muted)}.metricas-live strong,.resultado-grid strong{font-size:19px;margin-top:4px}
+.botao-principal,.botao-secundario,.botao-perigo{width:100%;border:none;border-radius:15px;padding:15px;font-size:17px;font-weight:bold;cursor:pointer}.botao-principal{background:linear-gradient(90deg,var(--azul),var(--azul2));color:#fff}.botao-secundario{margin-top:9px;background:#edf1f8;color:var(--texto)}.botao-perigo{background:#ffe9eb;color:#a32d37;margin-top:12px}
+.efeitos-area{position:absolute;inset:0;pointer-events:none;overflow:hidden}.particula{position:absolute;font-size:22px;animation:particula 1s ease-out forwards}@keyframes particula{to{transform:translateY(-85px) scale(1.5);opacity:0}}
+.resultado-topo{text-align:center}.trofeu{font-size:68px;animation:pulo 1.8s infinite}.estrelas-gigantes{font-size:42px;color:#f2bc00;letter-spacing:6px}.resultado-topo p{color:var(--muted)}
+.nova-medalha{background:#fff2b4;border-radius:18px;padding:15px;text-align:center;font-weight:bold;margin:16px 0}.escondido{display:none}.painel-erros{background:#fff8dc;border-radius:18px;padding:16px;margin:15px 0}.painel-erros h3{margin-top:0}
+.historico-lista{display:grid;gap:10px;margin:20px 0}.historico-item{background:#f6f8fc;border-radius:14px;padding:12px;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;text-align:center}.historico-item small,.historico-item strong{display:block}.historico-item small{color:var(--muted)}
+.confete{position:fixed;top:-20px;z-index:10;animation:cair 3s linear forwards;pointer-events:none}@keyframes cair{to{transform:translateY(110vh) rotate(500deg);opacity:0}}
+@media(max-width:760px){
+  .hero{grid-template-columns:1fr}.mapa-fases{flex-direction:column}.caminho{transform:rotate(90deg);height:22px}
+  .fase{width:100%}.colecao{flex-direction:column}.hud{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){
+  body{padding:10px}.painel{padding:18px}.header-jogo{align-items:flex-start}
+  .resumo-jogador,.metricas-live,.resultado-grid,.historico-item{grid-template-columns:1fr}
+  .palavra-alvo{font-size:31px}.logo{font-size:19px}.mascote.grande{font-size:55px}
+}
